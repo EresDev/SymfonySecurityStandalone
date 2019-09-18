@@ -10,7 +10,7 @@ class KernelTest extends WebTestCase
 {
     public function testValidUsernamePassword() : void
     {
-        $request = Request::create('/', 'GET', ['username' => 'foo', 'password' => 'bar']);
+        $request = Request::create('/', 'POST', ['username' => 'foo', 'password' => 'bar']);
 
         $kernel = new Kernel();
 

@@ -29,9 +29,9 @@ class SimpleAuthenticationListener implements ListenerInterface
     public function handle(GetResponseEvent $event)
     {
         $request = $event->getRequest();
-        if ($request->query->has('username') && $request->query->has('password')) {
-            $username = $request->query->get('username');
-            $password = $request->query->get('password');
+        if ($request->request->has('username') && $request->request->has('password')) {
+            $username = $request->request->get('username');
+            $password = $request->request->get('password');
             $unauthenticatedToken = new UsernamePasswordToken(
                 $username,
                 $password,
