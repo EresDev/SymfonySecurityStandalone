@@ -5,3 +5,4 @@ htdocs
 .phpunit
 /phpunit.xml
 
+/config/jwt/*.pem
