@@ -1,13 +1,13 @@
 <?php
 
-use App\Kernel;
+use App\SimpleAuthenticationKernel;
 use Symfony\Component\HttpFoundation\Request;
 
 require_once __DIR__ . 'vendor/autoload.php';
 
 $request = Request::createFromGlobals();
 
-$kernel = new Kernel();
+$kernel = new SimpleAuthenticationKernel();
 
 /**
  * @var \Symfony\Component\HttpFoundation\Response $response

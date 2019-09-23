@@ -2,18 +2,17 @@
 
 namespace Tests;
 
-use App\JWTKernel;
+use App\JWTAuthenticationKernel;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\JWTUserToken;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Core\User\User;
 
-class JWTKernelTest extends WebTestCase
+class JWTAuthenticationKernelTest extends WebTestCase
 {
     public function testValidUsernamePassword() : void
     {
-        $token = JWTKernel::getJWTTokenManager()->create(
+        $token = JWTAuthenticationKernel::getJWTTokenManager()->create(
             new User('foo', 'bar')
         );
 
@@ -22,21 +21,10 @@ class JWTKernelTest extends WebTestCase
         );
         $request->headers->set('Authorization', $token);
 
-        $kernel = new JWTKernel();
+        $kernel = new JWTAuthenticationKernel();
 
         $response = $kernel->handle($request);
 
         $this->assertInstanceOf(JWTUserToken::class, $response);
     }
-
-//    public function testInvalidUsernamePassword() : void
-//    {
-//        $this->expectException(BadCredentialsException::class);
-//
-//        $request = Request::create('/', 'POST', ['username' => 'invalid', 'password' => 'bar']);
-//
-//        $kernel = new Kernel();
-//
-//        $response = $kernel->handle($request);
-//    }
 }
