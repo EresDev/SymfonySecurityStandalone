@@ -21,7 +21,7 @@ use Symfony\Component\Security\Core\User\InMemoryUserProvider;
 use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserChecker;
 
-class AuthenticationKernel implements HttpKernelInterface
+class JWTTokenGenerator implements HttpKernelInterface
 {
     public function handle(Request $request, $type = self::MASTER_REQUEST, $catch = true)
     {

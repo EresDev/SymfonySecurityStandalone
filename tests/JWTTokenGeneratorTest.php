@@ -2,18 +2,18 @@
 
 namespace Tests;
 
-use App\AuthenticationKernel;
+use App\JWTTokenGenerator;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 
-class AuthenticationKernelTest extends WebTestCase
+class JWTTokenGeneratorTest extends WebTestCase
 {
     public function testValidUsernamePassword() : void
     {
         $request = Request::create('/', 'POST', ['username' => 'foo', 'password' => 'bar']);
 
-        $kernel = new AuthenticationKernel();
+        $kernel = new JWTTokenGenerator();
 
         $response = $kernel->handle($request);
 
@@ -28,8 +28,8 @@ class AuthenticationKernelTest extends WebTestCase
 
         $request = Request::create('/', 'POST', ['username' => 'invalid', 'password' => 'bar']);
 
-        $kernel = new AuthenticationKernel();
+        $kernel = new JWTTokenGenerator();
 
-        $response = $kernel->handle($request);
+        $kernel->handle($request);
     }
 }

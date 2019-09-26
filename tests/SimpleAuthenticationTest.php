@@ -2,18 +2,18 @@
 
 namespace Tests;
 
-use App\SimpleAuthenticationKernel;
+use App\SimpleAuthentication;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 
-class SimpleAuthenticationKernelTest extends WebTestCase
+class SimpleAuthenticationTest extends WebTestCase
 {
     public function testValidUsernamePassword() : void
     {
         $request = Request::create('/', 'POST', ['username' => 'foo', 'password' => 'bar']);
 
-        $kernel = new SimpleAuthenticationKernel();
+        $kernel = new SimpleAuthentication();
 
         $response = $kernel->handle($request);
 
@@ -26,7 +26,7 @@ class SimpleAuthenticationKernelTest extends WebTestCase
 
         $request = Request::create('/', 'POST', ['username' => 'invalid', 'password' => 'bar']);
 
-        $kernel = new SimpleAuthenticationKernel();
+        $kernel = new SimpleAuthentication();
 
         $response = $kernel->handle($request);
     }

@@ -1,7 +1,8 @@
 {
     "require": {
         "php": ">=7.1",
-        "lexik/jwt-authentication-bundle": "^2.6"
+        "lexik/jwt-authentication-bundle": "^2.6",
+        "symfony/yaml": "^4.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.3"
